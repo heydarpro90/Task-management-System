@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = userManager.saveUser(userData);
 
         if(result.success){
-        return window.location.href = "../signin.html";
+        return window.location.href = "../index.html";
 
         }else{
             console.log("error");

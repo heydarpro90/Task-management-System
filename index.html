@@ -3,209 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Encan.io - Manage Your Task</title>
+  <title>Manage Your Task</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            display: ['"Playfair Display"', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Poppins', 'sans-serif'] },
           colors: {
-            mint: {
-              50: '#f0f5f0',
-              100: '#e8f0e8',
-              200: '#d4e5d4',
-            },
-            coral: '#f07c50',
-            forest: '#3d6b4f',
-          },
+            primary: '#6F4FFF',
+            secondary: '#977FFF',
+            accent: '#f07c50',
+            bgLight: '#F8F9FD'
+          }
         }
       }
     }
   </script>
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .font-display { font-family: 'Playfair Display', serif; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    .animate-float { animation: float 4s ease-in-out infinite; }
     .dot-pattern {
-      background-image: radial-gradient(rgba(61, 107, 79, 0.3) 1.5px, transparent 1.5px);
-      background-size: 12px 12px;
+      background-image: radial-gradient(#6F4FFF 1px, transparent 1px);
+      background-size: 25px 25px;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    @keyframes float-slow {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-    .animate-float { animation: float 3s ease-in-out infinite; }
-    .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
   </style>
 </head>
-<body class="bg-mint-100 min-h-screen">
-  <!-- Header -->
-  <header class="w-full py-5 px-6 lg:px-12">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <!-- Logo -->
-      <div class="flex items-center gap-2">
-        <div class="w-10 h-10 bg-forest rounded-full flex items-center justify-center">
-          <span class="text-white font-bold text-lg">e</span>
-        </div>
-        <span class="font-semibold text-gray-800 text-lg">Encan.io</span>
+<body class="bg-bgLight font-sans">
+
+  <header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center shadow-lg">
+        <span class="text-white font-bold text-xl">e</span>
       </div>
-      <!-- Navigation -->
-      <nav class="hidden lg:flex items-center gap-8">
-        <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors text-sm font-medium">Products</a>
-        <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors text-sm font-medium">Pricing</a>
-        <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors text-sm font-medium">Use Cases</a>
-        <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors text-sm font-medium">Location</a>
-        <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors text-sm font-medium">FAQ</a>
-        <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors text-sm font-medium">Company</a>
-      </nav>
-      <!-- Auth Buttons -->
-      <div class="flex items-center gap-3">
-        <button class="text-gray-800 font-medium px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors">
-          Sign In
-        </button>
-        <button class="border border-gray-300 rounded-full px-6 py-2 font-medium hover:bg-white transition-colors">
-          Sign Up
-        </button>
-      </div>
+      <span class="text-xl font-bold text-gray-800 tracking-tight ">Task 252</span>
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+      <a href="#" class="hover:text-primary transition-colors">Products</a>
+      <a href="#" class="hover:text-primary transition-colors">Pricing</a>
+      <a href="#" class="hover:text-primary transition-colors">Use Cases</a>
+      <a href="#" class="hover:text-primary transition-colors">Company</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="signin.html" class="text-sm font-semibold text-gray-700 hover:text-primary">Login</a>
+      <a href="signin.html" class="bg-white border-2 border-primary text-primary px-6 py-2 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all shadow-sm">Sign Up</a>
     </div>
   </header>
-  <!-- Hero Section -->
-  <section class="pt-12 pb-8 px-6 lg:px-12 text-center">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-800 mb-6 tracking-tight">
-        Manage Your Task.
-      </h1>
-      <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-        Encan boards, lists, and cards enable you to organize and prioritize your projects in a fun, 
-        flexible, and rewarding way. Let's started 😊
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <button class="bg-coral text-white rounded-full px-8 py-4 text-base font-medium shadow-lg hover:shadow-xl transition-shadow">
-          Get Started
-        </button>
-        <button class="border border-gray-300 bg-white rounded-full px-8 py-4 text-base font-medium hover:bg-gray-50 flex items-center gap-2">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-          Discover In Video
-        </button>
-      </div>
+
+  <main class="max-w-7xl mx-auto px-6 pt-16 pb-24 text-center">
+    <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+      Manage Your <span class="text-primary">Task.</span>
+    </h1>
+    <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+252 Task Manager Streamline your projects with intuitive boards and smart cards. Organize, prioritize, and conquer your goals efficiently.    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+      <button class="bg-primary text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-primary/30 hover:scale-105 transition-transform">
+        Get Started 😊
+      </button>
+      <button class="flex items-center gap-2 bg-white text-gray-700 px-10 py-4 rounded-full font-bold text-lg border border-gray-200 hover:bg-gray-50 transition-all">
+        <span class="w-6 h-6 bg-red-100 text-red-500 rounded-full flex items-center justify-center">▶</span>
+        Discover In Video
+      </button>
     </div>
-  </section>
-  <!-- Dashboard Mockup -->
-  <section class="relative px-6 lg:px-12 py-8 overflow-hidden">
-    <div class="max-w-6xl mx-auto relative">
-      <!-- Dot pattern background -->
-      <div class="absolute inset-0 dot-pattern opacity-50 rounded-3xl"></div>
+
+    <div class="relative mt-10">
+      <div class="absolute inset-0 dot-pattern opacity-10"></div>
       
-      <div class="relative flex flex-col lg:flex-row items-center justify-center gap-8">
-        <!-- Left floating card - Activity Chart -->
-        <div class="animate-float bg-white rounded-2xl shadow-xl p-6 w-72">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-semibold text-gray-800">Activity</h3>
-            <span class="text-xs text-gray-400">Month</span>
-          </div>
+      <div class="relative flex flex-col lg:flex-row items-center justify-center gap-12">
+        
+        <div class="animate-float bg-white p-6 rounded-3xl shadow-xl border border-gray-100 w-full max-w-[280px] hidden lg:block" style="animation-delay: 0.5s;">
+          <h4 class="text-left font-bold text-gray-800 mb-4">Activity</h4>
           <div class="flex items-end gap-2 h-32">
-            <div class="flex-1 bg-mint-200 rounded-t-lg" style="height: 40%"></div>
-            <div class="flex-1 bg-mint-200 rounded-t-lg" style="height: 60%"></div>
-            <div class="flex-1 bg-coral rounded-t-lg" style="height: 90%"></div>
-            <div class="flex-1 bg-mint-200 rounded-t-lg" style="height: 45%"></div>
-            <div class="flex-1 bg-mint-200 rounded-t-lg" style="height: 70%"></div>
-            <div class="flex-1 bg-mint-200 rounded-t-lg" style="height: 55%"></div>
-            <div class="flex-1 bg-mint-200 rounded-t-lg" style="height: 50%"></div>
+            <div class="flex-1 bg-gray-100 rounded-md" style="height: 40%"></div>
+            <div class="flex-1 bg-gray-100 rounded-md" style="height: 65%"></div>
+            <div class="flex-1 bg-accent rounded-md" style="height: 90%"></div>
+            <div class="flex-1 bg-gray-100 rounded-md" style="height: 50%"></div>
+            <div class="flex-1 bg-gray-100 rounded-md" style="height: 75%"></div>
           </div>
-          <div class="flex justify-between mt-2 text-xs text-gray-400">
-            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-          </div>
+          <p class="mt-4 text-xs text-gray-400 text-left">Progress increased by 15% today</p>
         </div>
-        <!-- Center - Main Dashboard Card -->
-        <div class="animate-float-slow bg-white rounded-3xl shadow-2xl p-6 w-80 lg:w-96 z-10">
-          <!-- User Header -->
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full"></div>
-            <div>
-              <h3 class="font-semibold text-gray-800">Miftah Putra Kw</h3>
-              <p class="text-sm text-gray-400">Product Designer</p>
+
+        <div class="animate-float bg-white p-8 rounded-[40px] shadow-2xl border border-gray-50 w-full max-w-sm z-10">
+          <div class="flex items-center gap-4 mb-8">
+            <div class="w-14 h-14 bg-gradient-to-tr from-orange-400 to-accent rounded-full border-4 border-white shadow-md"></div>
+            <div class="text-left">
+              <h3 class="font-bold text-gray-800 text-lg">Heydar MohameD</h3>
+              <p class="text-sm text-gray-400 font-medium">Product Designer</p>
             </div>
           </div>
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4 mb-6">
-            <div class="text-center">
-              <p class="text-2xl font-bold text-gray-800">86</p>
-              <p class="text-xs text-gray-400">Project</p>
-            </div>
-            <div class="text-center">
-              <p class="text-2xl font-bold text-gray-800">20</p>
-              <p class="text-xs text-gray-400">In Progress</p>
-            </div>
-            <div class="text-center">
-              <p class="text-2xl font-bold text-gray-800">68</p>
-              <p class="text-xs text-gray-400">Complete</p>
-            </div>
+
+          <div class="grid grid-cols-3 gap-2 mb-8 bg-gray-50 p-4 rounded-2xl">
+            <div><p class="text-xl font-bold text-gray-800">86</p><p class="text-[10px] text-gray-400 uppercase">Project</p></div>
+            <div><p class="text-xl font-bold text-gray-800">20</p><p class="text-[10px] text-gray-400 uppercase">Progress</p></div>
+            <div><p class="text-xl font-bold text-gray-800">68</p><p class="text-[10px] text-gray-400 uppercase">Done</p></div>
           </div>
-          <!-- Task List -->
-          <div class="space-y-3">
-            <div class="flex items-center gap-3 p-3 bg-mint-50 rounded-xl">
-              <div class="w-8 h-8 bg-forest rounded-lg flex items-center justify-center">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-medium text-gray-800">Landing page design</p>
-                <p class="text-xs text-gray-400">Today</p>
-              </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 p-3 bg-indigo-50 rounded-2xl border border-indigo-100">
+              <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">✓</div>
+              <p class="text-sm font-semibold text-gray-700">Landing page design</p>
             </div>
-            <div class="flex items-center gap-3 p-3 bg-orange-50 rounded-xl">
-              <div class="w-8 h-8 bg-coral rounded-lg flex items-center justify-center">
-                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-medium text-gray-800">Dashboard project</p>
-                <p class="text-xs text-gray-400">Tomorrow</p>
-              </div>
+            <div class="flex items-center gap-3 p-3 bg-orange-50 rounded-2xl border border-orange-100">
+              <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white">⏰</div>
+              <p class="text-sm font-semibold text-gray-700">Dashboard project</p>
             </div>
           </div>
         </div>
-        <!-- Right floating card - Progress Ring -->
-        <div class="animate-float bg-white rounded-2xl shadow-xl p-6 w-64">
-          <h3 class="font-semibold text-gray-800 mb-4">Working Hours</h3>
-          <div class="relative w-32 h-32 mx-auto">
-            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#e8f0e8" stroke-width="8"/>
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#f07c50" stroke-width="8" 
-                stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round"/>
-            </svg>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-center">
-                <p class="text-2xl font-bold text-gray-800">75%</p>
-                <p class="text-xs text-gray-400">Complete</p>
-              </div>
-            </div>
+
+        <div class="animate-float bg-white p-6 rounded-3xl shadow-xl border border-gray-100 w-full max-w-[280px] hidden lg:block" style="animation-delay: 1s;">
+          <h4 class="text-left font-bold text-gray-800 mb-2">Working Hours</h4>
+          <div class="relative w-32 h-32 mx-auto my-4">
+             <svg class="w-full h-full transform -rotate-90">
+               <circle cx="64" cy="64" r="50" stroke="#f3f4f6" stroke-width="12" fill="transparent" />
+               <circle cx="64" cy="64" r="50" stroke="#6F4FFF" stroke-width="12" fill="transparent" stroke-dasharray="314" stroke-dashoffset="100" stroke-linecap="round" />
+             </svg>
+             <div class="absolute inset-0 flex items-center justify-center font-bold text-xl text-gray-800">75%</div>
           </div>
-          <div class="mt-4 space-y-2">
-            <div class="flex justify-between text-sm">
-              <span class="text-gray-500">Design</span>
-              <span class="text-gray-800 font-medium">12h</span>
-            </div>
-            <div class="flex justify-between text-sm">
-              <span class="text-gray-500">Development</span>
-              <span class="text-gray-800 font-medium">8h</span>
-            </div>
+          <div class="text-left text-sm space-y-1">
+            <p class="flex justify-between"><span>Design</span> <b>12h</b></p>
+            <p class="flex justify-between text-gray-400"><span>Dev</span> <b>8h</b></p>
           </div>
         </div>
+
       </div>
     </div>
-  </section>
+  </main>
 </body>
 </html>

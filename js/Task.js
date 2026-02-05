@@ -22,4 +22,20 @@ class Task{
         };  
         
     }
+
+    toggleComplete(taskId){
+        const id = Number(taskId);
+        const tasks = this.getTasks().map(t => t.id === id ? {...t, isCompleted: !t.isCompleted} : t);
+        this.tasks = tasks;
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        return { success: true };
+    }
+
+    deleteTask(taskId){
+        const id = Number(taskId);
+        const tasks = this.getTasks().filter(t => t.id !== id);
+        this.tasks = tasks;
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        return { success: true };
+    }
 }
